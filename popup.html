@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Font Picker</title>
+
+        <script src="/resources/js/jquery-3.1.0.min.js"></script>
+        <script src="popup.js"></script>
+        <script src="/resources/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+        <style>
+
+            body
+            {
+                /* background: #252424; */
+                color: #bfbfbf;
+                padding: 20px;
+
+                background-color: #485461;
+                background-image: linear-gradient(180deg#0d1a31 0%, #28313b 78%);
+                 margin: 0px;
+                 scroll-behavior: smooth;
+                 
+            }
+
+            input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                background: #ffffff;
+                cursor: pointer;
+            }
+
+            h1
+            {
+                display: block;
+                text-align: center;
+                margin-bottom: 30px;
+                font-family: monospace;
+                letter-spacing: 4px;
+                font-size: 28px;
+                border: 1px solid #ffffff;
+                border-left: 5px solid #ffffff;
+                border-right: 5px solid #ffffff;
+                font-weight: 600;
+
+            }
+
+            h2
+            {
+                margin-bottom: 30px;
+            
+                text-align: center;
+                /* font-family: s; */
+                font-size: 15px;
+            }
+
+            input
+            {
+                display: block;
+                margin: 2px 0px;
+                width: 100%;
+                line-height: 2;
+                border: none;
+                max-width: 100%;
+                padding: 0px 15px;
+                font-family: monospace;
+                font-size: 16px;
+                border-radius: 5px;
+                margin-left: 0px;
+                margin-bottom: 0px;
+            }
+
+            input:active,input:focus,select:focus,select:active
+            {
+                border: none;
+                outline: none;
+            }
+
+            select
+            {
+                display: block;
+                border: none;
+                line-height: 2;
+                padding:10px;
+                border-radius: 5px;
+                max-width: 100%;
+                margin: 0px auto;
+                font-family: monospace;
+                margin: 2px 0px;
+                margin-left: 0px;
+
+
+                background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ffffff;
+    -webkit-appearance: none;
+    background-position-x: 90%;
+            }
+
+            
+            .form-range
+            {
+                height: unset;
+                margin: 0px;
+            }
+
+            .element_id_group,.slider,.select-group
+            {
+                margin: 10px 0px;
+            }
+
+            .element_id_group
+            {
+                margin-top: 0px;
+            }
+
+            .slider
+            {
+                margin: 10px 0px;
+            }
+
+            .slider:last-child
+            {
+                margin-bottom: 0px;
+            }
+
+            .error
+            {
+                transition: 0.3s;
+                background: #191919;
+                margin: 10px 0px;
+                padding: 0px 2px;
+                overflow-wrap: break-word;
+                font-family: monospace;
+            }
+            .text-align-div label
+            {
+                display: block;
+            }
+
+            .text-align-div ul
+            {
+                list-style: none;
+                padding: 0px;
+                display: block;
+                border: 3px double #758392;
+                padding: 5px;
+            }
+
+            .text-align-div li
+            {
+               
+                padding: 2px 5px;
+                border-radius: 5px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                cursor: pointer;
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .text-align-div li:hover,.text-align-div li.active
+            {
+                background: #253342;
+                
+                box-shadow: 0px 0px 20px 2px #646464;
+            }
+
+            .reset-btn
+            {
+                color: #485461;
+                background: #ffffff;
+                font-weight: 500;
+                /* padding: 7px 16px; */
+                display: block;
+                letter-spacing: 2px;
+                text-align: center;
+            }
+
+            .reset-btn:hover
+            {
+                color: #fffdfd;
+                background: #253342;
+            }
+            
+
+        </style>
+    </head>
+    <body style="width:300px">
+        <h1>Font Picker</h1>
+        <!-- <h2>Enter element's id then select font family</h2> -->
+
+        <div class="element_id_group">
+            <label for="customRange3" class="form-label">Element ID</label>
+            <input type="text" name="id" id="el_id" placeholder="Enter element id here">
+            <small id="error" class="error d-none text-danger">Please enter element id.</small>
+        </div>
+
+        <div class="select_group">
+            <label for="customRange3" class="form-label">Font  Family</label>
+            <select name="font_family" id="font_family" class="select selectpicker" style="width:100%">
+                <option value="">Select Font</option>
+            </select>
+        </div>
+        
+
+        
+        
+        <div class="slider">
+            <label for="customRange3" class="form-label">Font  Size</label>
+            <input type="range" class="form-range" min="1" max="100" step="1" id="font-size-slider">
+        </div>
+
+
+        <div class="slider">
+            <label for="customRange" class="form-label">Font  Weight</label>
+            <input type="range" class="form-range" min="100" max="900" step="100" id="font-weight-slider">
+        </div>
+
+        <div class="slider text-align-div">
+            <label for="customRange" class="form-label">Text Align</label>
+            <ul class="btn-ul">
+                <li data="" class="btn-li active">Default</li>
+                <li data="right" class="btn-li">Right</li>
+                <li data="left" class="btn-li">Left</li>
+                <li data="center" class="btn-li">Center</li>
+                <li data="justify" class="btn-li">Justify</li>
+            </ul>
+        </div>
+
+        <div class="slider">
+            <div class="btn reset-btn">Reset</div>
+        </div>
+
+        
+
+        
+     <!--    <input id="spendAmount" type="submit" value="Spend"/> -->
+    </body>
+</html>
+
+
