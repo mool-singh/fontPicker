@@ -1,2 +1,4 @@
 # fontPicker
-Google Font picker (chrome extension) with some font related UI tools .
+This is an chrome extention that help user to check google fonts on their page.
+
+
