@@ -144,7 +144,7 @@ $(function(){
 
 
 async function GoogleFonts() {
-	let response = await fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBG3YhQPBcWsZ7TwxJFs2i1G5HbBXNhRU4");
+	let response = await fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=ADD_YOUR_GOOGLE_FONT_API_KEY_HERE");
 
 	if (response.ok) {
 	  let json = await response.json();
